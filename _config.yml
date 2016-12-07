@@ -15,7 +15,7 @@ pygments:    true
 permalink:     date
 paginate_path: 'page:num'
 
-markdown:      maruku
+markdown:      kramdown
 markdown_ext:  markdown,mkd,mkdn,md
 textile_ext:   textile
 
@@ -30,18 +30,7 @@ baseurl:     /blog
 url:         http://localhost:4000
 lsi:         false
 
-maruku:
-  use_tex:    false
-  use_divs:   false
-  png_engine: blahtex
-  png_dir:    images/latex
-  png_url:    /images/latex
-
 rdiscount:
-  extensions: []
-
-markdown: redcarpet
-redcarpet:
     extensions: [ "fenced_code_blocks", "hard_wrap","autolink", "tables", "strikethrough", "superscript", "with_toc_data", "highlight", "prettify","no_intra_emphasis"]
 
 kramdown:

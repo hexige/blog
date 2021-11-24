@@ -2,17 +2,17 @@
 title: Blog of hxg_
 header-img: img/post-bg-01.jpg
 email: hexige408@gmail.com
-copyright_name: yunlaiwu
+copyright_name: Baidu
 description: "just desc"
 baseurl: "/blog"
 url: "http://hexige.github.io"
-email_username:  hexige@yunlaiwu.com
+email_username:  hexige@baidu.com
 
 # Build settings
 markdown: kramdown
 highlighter: rouge
 permalink: pretty
-paginate: 5
+paginate: 10
 
 gems: [jekyll-paginate, jekyll-feed]
 theme: jekyll-theme-hacker

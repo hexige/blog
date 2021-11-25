@@ -9,7 +9,7 @@ url: "http://hexige.github.io"
 email_username:  4084608@qq.com
 
 # Build settings
-markdown: kramdown
+#markdown: kramdown
 highlighter: rouge
 permalink: pretty
 paginate: 10

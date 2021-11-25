@@ -31,8 +31,6 @@ $(INTERNAL_OTA_PACKAGE_TARGET): $(OTA_TOOL_EXTENSION)/releasetools.py
 
 main 里面只是对参数的解析，主要用于区分是否为 A/B 升级，整包和差分等。
 
-#### 整包
-
 ```
 # Generate a full OTA.
   if OPTIONS.incremental_source is None:
@@ -42,21 +40,21 @@ main 里面只是对参数的解析，主要用于区分是否为 A/B 升级，�
           output_file=args[1])
 ```
 
-##### WriteFullOTAPackage
+#### WriteFullOTAPackage
 
-###### 1.获取 build 信息
+##### 1.获取 build 信息
 
 ```
 target_info = BuildInfo(OPTIONS.info_dict, OPTIONS.oem_dicts)
 ```
 
-###### 2.获取 metadata
+##### 2.获取 metadata
 
 ```
 metadata = GetPackageMetadata(target_info)
 ```
 
-###### 3.是否有 RecoveryPatch
+##### 3.是否有 RecoveryPatch
 
 ```
 assert HasRecoveryPatch(input_zip)
@@ -76,7 +74,7 @@ def HasRecoveryPatch(target_files_zip):
           "SYSTEM/etc/recovery.img" in namelist)
 ```
 
-###### 4.降级检查，根据 build.utc 检查
+##### 4.降级检查，根据 build.utc 检查
 
 ```
 # Assertions (e.g. downgrade check, device properties check).
@@ -86,7 +84,7 @@ def HasRecoveryPatch(target_files_zip):
     script.AssertOlderBuild(ts, ts_text)
 ```
 
-###### 5.system.img 处理
+##### 5.system.img 处理
 
 ```
   # script中写入fingerprint
@@ -112,7 +110,7 @@ def HasRecoveryPatch(target_files_zip):
   system_diff.WriteScript(script, output_zip)
 ```
 
-####### 5.1 systemDiff 的计算与写入以下两部分，实际是在 common.py 中执行的。
+###### 5.1 systemDiff 的计算与写入以下两部分，实际是在 common.py 中执行的。
 
 
    ```
@@ -148,7 +146,7 @@ def HasRecoveryPatch(target_files_zip):
       _, self.device = GetTypeAndDevice("/" + partition,
                                         OPTIONS.source_info_dict)
    ```
-####### 5.2 common.WriteScript
+###### 5.2 common.WriteScript
    ```
     def WriteScript(self, script, output_zip, progress=None):
     if not self.src:
@@ -163,7 +161,7 @@ def HasRecoveryPatch(target_files_zip):
     if OPTIONS.verify:
       self._WritePostInstallVerifyScript(script)
    ```
-####### 5.3 common._WritePostInstallVerifyScript
+###### 5.3 common._WritePostInstallVerifyScript
    ```
     # 先将system.transfer.list写入
     ZipWrite(output_zip,

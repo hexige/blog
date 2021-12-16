@@ -224,6 +224,7 @@ def AddSplitTransfersWithFixedSizeChunks(tgt_name, src_name, tgt_ranges,
                  style, by_id)
 ```
 4 ComputePatches,用于计算patch并最终生成.patch.dat文件
+
 ```python
 def ComputePatches(self, prefix):
     print("Reticulating splines...")
@@ -291,6 +292,7 @@ def ComputePatches(self, prefix):
         offset += xf.patch_len
         patch_fd.write(patch)
 ```
+
 5 compute_patch,只是调用了bsdiff/imgdiff指令
 ```python
 def compute_patch(srcfile, tgtfile, imgdiff=False):
